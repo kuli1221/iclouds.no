@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iClouds - The International Cloud Appreciation Society</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+<!-- Header -->
+<header>
+    <div class="container header-container">
+        <div class="logo">
+            <h1>i<span>Clouds</span></h1>
+        </div>
+        <button class="mobile-menu-btn">☰</button>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#membership">Membership</a></li>
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#sighting">Report Sighting</a></li>
+                <li><a href="#game">Cloud Game</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+        </nav>
+        <div class="cart-indicator">
+            <button onclick="toggleCart()" class="btn" style="background: transparent; color: var(--dark-blue); border: 1px solid var(--dark-blue); padding: 0.5rem 1rem;">
+                🛒 Cart <span id="cart-count">0</span>
+            </button>
+            <div id="cart-dropdown" class="cart-dropdown">
+                <h4>Your Cloud Collection</h4>
+                <div id="cart-items"></div>
+                <div id="cart-total" style="border-top: 1px solid #eee; padding-top: 1rem; margin-top: 1rem; font-weight: bold;"></div>
+                <button onclick="checkout()" class="btn" style="width: 100%; margin-top: 1rem;">Checkout (Theoretical)</button>
+                <p style="font-size: 0.8rem; margin-top: 0.5rem; font-style: italic;">Note: These are metaphorical clouds. No physical items will be shipped.</p>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Hero Section -->
+<section class="hero" id="home">
+    <div class="container">
+        <h1>Look Up.</h1>
+        <p>The world's premier organization dedicated to the observation, classification, and sheer awe of atmospheric hydrometeors. Welcome to the International Cloud Appreciation Society.</p>
+        <a href="#membership" class="btn">Become a Member</a>
+        <a href="#sighting" class="btn btn-outline">Submit a Sighting</a>
+    </div>
+</section>
+
+<!-- Intro Section -->
+<section class="intro">
+    <div class="container">
+        <h2>In a World of Grounded Concerns, We Champion the Ephemeral.</h2>
+        <p>Here at iClouds, we believe that a well-formed cumulonimbus is a work of art. A wisp of cirrus is a poem written on the sky. We are a global community of enthusiasts, scientists, and dreamers who understand that the most beautiful things in life are, quite literally, on another level.</p>
+    </div>
+</section>
+
+<!-- Cloud of the Month -->
+<section class="cloud-of-month">
+    <div class="container">
+        <div class="section-header">
+            <h2>Cloud of the Month</h2>
+        </div>
+        <div class="cloud-container">
+            <div class="cloud-image">
+                <!-- Placeholder for cloud image -->
+                <div style="height: 300px; background: linear-gradient(to bottom, #87CEEB, #E0F7FF); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                    Cumulus Mediocris
+                </div>
+            </div>
+            <div class="cloud-content">
+                <h3>Cumulus mediocris</h3>
+                <p class="cloud-author">— Dr. Stratus Nimbus, Head of Acquisitions</p>
+                <p>"This month, we celebrate the humble <em>Cumulus mediocris</em>. Often overlooked in favor of its more dramatic cousins, the 'mediocris' represents a state of perfect atmospheric equilibrium. Note the crisp, cauliflower-like outlines and the flat, dark base. It's not showing off, it's just... being. A lesson for us all."</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Membership Tiers -->
+<section class="membership" id="membership">
+    <div class="container">
+        <div class="section-header">
+            <h2>Elevate Your Existence. Join iClouds.</h2>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="cirrus">Cirrus Tier</button>
+            <button class="tab-btn" data-tab="cumulus">Cumulus Tier</button>
+            <button class="tab-btn" data-tab="cumulonimbus">Cumulonimbus Tier</button>
+        </div>
+
+        <div class="tab-content active" id="cirrus-tab">
+            <div class="tier-card">
+                <h3>Cirrus Tier</h3>
+                <div class="tier-price">Free</div>
+                <ul class="tier-features">
+                    <li>Access to our monthly newsletter, "The Condensation"</li>
+                    <li>View the public Cloud Gallery</li>
+                    <li>The personal satisfaction of knowing you're part of something bigger</li>
+                </ul>
+                <button onclick="joinMembership('cirrus')" class="btn">Join Now</button>
+            </div>
+        </div>
+
+        <div class="tab-content" id="cumulus-tab">
+            <div class="tier-card">
+                <h3>Cumulus Tier</h3>
+                <div class="tier-price">$49/year</div>
+                <ul class="tier-features">
+                    <li>All Cirrus benefits</li>
+                    <li>Exclusive access to our member-only forums</li>
+                    <li>A digital "Member" badge for your email signature</li>
+                    <li>Voting rights in our annual "Cloud of the Year" awards</li>
+                </ul>
+                <button onclick="joinMembership('cumulus')" class="btn">Join Now</button>
+            </div>
+        </div>
+
+        <div class="tab-content" id="cumulonimbus-tab">
+            <div class="tier-card">
+                <h3>Cumulonimbus Tier</h3>
+                <div class="tier-price">$199/year</div>
+                <p style="font-style: italic; color: var(--accent-gold); margin-bottom: 1rem;">Most Popular</p>
+                <ul class="tier-features">
+                    <li>All Cumulus benefits</li>
+                    <li>A physical, embossed membership certificate</li>
+                    <li>The official iClouds field kit</li>
+                    <li>Priority consideration for having your cloud photos featured</li>
+                    <li>The title "Official Sky-Scanner" on your forum profile</li>
+                </ul>
+                <button onclick="joinMembership('cumulonimbus')" class="btn">Join Now</button>
+            </div>
+        </div>
+
+        <!-- Membership Message -->
+        <div class="membership-message" id="membership-message"></div>
+    </div>
+</section>
+
+<!-- Shop -->
+<section class="shop" id="shop">
+    <div class="container">
+        <div class="section-header">
+            <h2>The iClouds Field Kit</h2>
+            <p>No serious cloud spotter should be without it.</p>
+        </div>
+
+        <div class="products">
+            <div class="product-card">
+                <div class="product-image">🛏️</div>
+                <div class="product-content">
+                    <h3>Official Cloud-Spotting Blanket</h3>
+                    <p class="product-price">$45</p>
+                    <p>100% organic cotton, for optimal comfort during extended skyward gazing.</p>
+                    <button onclick="addToCart('Official Cloud-Spotting Blanket', 45)" class="btn" style="margin-top: 1rem;">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">📖</div>
+                <div class="product-content">
+                    <h3>Lucid Skies Guidebook</h3>
+                    <p class="product-price">$25</p>
+                    <p>A waterproof, spiral-bound guide to cloud classification with philosophical foreword.</p>
+                    <button onclick="addToCart('Lucid Skies Guidebook', 25)" class="btn" style="margin-top: 1rem;">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">☕</div>
+                <div class="product-content">
+                    <h3>iClouds-branded Thermos</h3>
+                    <p class="product-price">$32</p>
+                    <p>Keep your beverage hot or cold while you contemplate the vastness of the atmosphere.</p>
+                    <button onclick="addToCart('iClouds-branded Thermos', 32)" class="btn" style="margin-top: 1rem;">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">🎁</div>
+                <div class="product-content">
+                    <h3>The "Full Sky" Kit</h3>
+                    <p class="product-price">$95</p>
+                    <p>Get the blanket, guidebook, and thermos together for the complete experience.</p>
+                    <button onclick="addToCart('The Full Sky Kit', 95)" class="btn" style="margin-top: 1rem;">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Sighting Form -->
+<section class="sighting-form" id="sighting">
+    <div class="container">
+        <div class="section-header">
+            <h2>Report a Sighting</h2>
+            <p>A very detailed form that takes the process extremely seriously.</p>
+        </div>
+
+        <div class="form-container">
+            <form id="sightingForm">
+                <div class="form-group">
+                    <label for="date">Date & Time of Sighting</label>
+                    <input type="datetime-local" id="date" name="date" required>
+                    <p class="form-note">Precise to the minute, please</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="coordinates">GPS Coordinates</label>
+                    <input type="text" id="coordinates" name="coordinates" placeholder="e.g., 40.7128° N, 74.0060° W" required>
+                    <p class="form-note">Mandatory for proper cloud tracking</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="cloud-type">Primary Cloud Genus</label>
+                    <select id="cloud-type" name="cloud-type" required>
+                        <option value="">Select a cloud type</option>
+                        <option value="cirrus">Cirrus</option>
+                        <option value="cumulus">Cumulus</option>
+                        <option value="stratus">Stratus</option>
+                        <option value="nimbus">Nimbus</option>
+                        <option value="altocumulus">Altocumulus</option>
+                        <option value="cirrocumulus">Cirrocumulus</option>
+                        <option value="stratocumulus">Stratocumulus</option>
+                        <option value="cumulonimbus">Cumulonimbus</option>
+                        <option value="altostratus">Altostratus</option>
+                        <option value="cirrostratus">Cirrostratus</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="classification">Secondary Classification</label>
+                    <select id="classification" name="classification">
+                        <option value="">Select classification (optional)</option>
+                        <option value="species">Species</option>
+                        <option value="varieties">Varieties</option>
+                        <option value="supplementary">Supplementary Features</option>
+                        <option value="mother-clouds">Mother-clouds</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="altitude">Estimated Altitude</label>
+                    <input type="text" id="altitude" name="altitude" placeholder="e.g., 6,500 ft">
+                </div>
+
+                <div class="form-group">
+                    <label for="emotional-impact">Emotional Impact</label>
+                    <select id="emotional-impact" name="emotional-impact" required>
+                        <option value="">Select your emotional response</option>
+                        <option value="awe">Awe</option>
+                        <option value="serenity">Serenity</option>
+                        <option value="mild-concern">Mild Concern</option>
+                        <option value="existential-dread">Existential Dread</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="photo">Photographic Evidence</label>
+                    <input type="file" id="photo" name="photo" accept="image/*">
+                    <p class="form-note">File types: .jpg, .png, .heic. Max 5MB. No filters. We value authenticity.</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="narrative">Personal Narrative</label>
+                    <textarea id="narrative" name="narrative" placeholder="Describe, in 500 words or less, the context of your sighting and its personal significance to you."></textarea>
+                </div>
+
+                <button type="submit" class="btn" style="width: 100%;">Submit Sighting</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Cloud Game -->
+<section class="cloud-game" id="game">
+    <div class="container">
+        <div class="section-header">
+            <h2>🔍 Cloud Spotting Challenge</h2>
+            <p>Test your cloud identification skills with our interactive game</p>
+        </div>
+
+        <div class="cloud-shape"></div>
+
+        <p>Identify this cloud type:</p>
+
+        <div class="game-options">
+            <button onclick="checkAnswer('cirrus', this)" class="btn btn-outline">Cirrus</button>
+            <button onclick="checkAnswer('cumulus', this)" class="btn btn-outline">Cumulus</button>
+            <button onclick="checkAnswer('stratus', this)" class="btn btn-outline">Stratus</button>
+            <button onclick="checkAnswer('nimbus', this)" class="btn btn-outline">Nimbus</button>
+        </div>
+
+        <p id="game-result" class="game-result"></p>
+
+        <button onclick="resetGame()" class="btn" style="margin-top: 1rem;">Try Another Cloud</button>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+    <div class="container">
+        <div class="section-header">
+            <h2>Frequently Asked Questions</h2>
+        </div>
+
+        <div class="faq-list">
+            <div class="faq-item">
+                <div class="faq-question">
+                    Is this website related to Apple iCloud?
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>No. We are concerned with the aqueous, not the aqueous silicon. Theirs is a brand. Ours is a calling.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Do you have an app?
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>We encourage our members to experience the sky directly, without a digital intermediary. Look up. Your phone is in your hand.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    My cloud evaporated before I could photograph it. Can I still report it?
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>The transient nature of clouds is what makes them beautiful. We accept post-evaporation testimonials, but they are subject to a higher standard of narrative excellence.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Are contrails considered clouds?
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>This is a topic of heated debate in our forums. The purists say no, the progressives say yes. We encourage you to join and form your own opinion.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>iClouds</h3>
+                <p>The International Cloud Appreciation Society. We are not associated with any tech company, weather service, or deity responsible for actual weather patterns.</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home" onclick="smoothScroll('home')">Home</a></li>
+                    <li><a href="#membership" onclick="smoothScroll('membership')">Membership</a></li>
+                    <li><a href="#shop" onclick="smoothScroll('shop')">Shop</a></li>
+                    <li><a href="#sighting" onclick="smoothScroll('sighting')">Report Sighting</a></li>
+                    <li><a href="#game" onclick="smoothScroll('game')">Cloud Game</a></li>
+                    <li><a href="#faq" onclick="smoothScroll('faq')">FAQ</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <ul class="footer-links">
+                    <li><a href="javascript:void(0)" onclick="showSocialAlert('Instagram')">📷 Instagram</a></li>
+                    <li><a href="javascript:void(0)" onclick="showSocialAlert('Twitter')">🐦 Twitter</a></li>
+                    <li><a href="javascript:void(0)" onclick="showNewsletterSignup()">📧 Newsletter</a></li>
+                    <li><a href="javascript:void(0)" onclick="showSocialAlert('Forums')">💭 Forums</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>© iClouds - The International Cloud Appreciation Society. All ephemeral rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Mobile Menu Toggle
+    document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+        document.querySelector('nav ul').classList.toggle('active');
+    });
+
+    // Tab Switching for Membership Tiers
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active class from all buttons and contents
+            tabBtns.forEach(b => b.classList.remove('active'));
+            tabContents.forEach(c => c.classList.remove('active'));
+
+            // Add active class to clicked button
+            btn.classList.add('active');
+
+            // Show corresponding content
+            const tabId = btn.getAttribute('data-tab') + '-tab';
+            document.getElementById(tabId).classList.add('active');
+        });
+    });
+
+    // FAQ Accordion
+    const faqQuestions = document.querySelectorAll('.faq-question');
+
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const answer = question.nextElementSibling;
+            const isActive = answer.classList.contains('active');
+
+            // Close all answers
+            document.querySelectorAll('.faq-answer').forEach(ans => {
+                ans.classList.remove('active');
+            });
+
+            // Update all icons
+            document.querySelectorAll('.faq-question span').forEach(icon => {
+                icon.textContent = '+';
+            });
+
+            // If this answer wasn't active, open it
+            if (!isActive) {
+                answer.classList.add('active');
+                question.querySelector('span').textContent = '−';
+            }
+        });
+    });
+
+    // === MEMBERSHIP SYSTEM ===
+    function joinMembership(tier) {
+        const messages = {
+            cirrus: "You've chosen the Cirrus Tier - floating gently into our community!",
+            cumulus: "Cumulus Tier selected - you're building something substantial!",
+            cumulonimbus: "Cumulonimbus Tier - prepare for a storm of exclusive benefits!"
+        };
+
+        const messageDiv = document.getElementById('membership-message');
+        messageDiv.innerHTML = `
+                <h3>⏳ Processing Your Application</h3>
+                <p>${messages[tier]}</p>
+                <p><em>Consulting atmospheric conditions... Checking cloud alignment...</em></p>
+                <div class="loading" style="margin: 1rem 0;">☁️ ⏳ ☁️</div>
+                <p>This may take 2-5 business days (or until we see a particularly interesting cloud formation)</p>
+                <button onclick="showWelcomeMessage('${tier}')" class="btn">Simulate Approval</button>
+            `;
+        messageDiv.style.display = 'block';
+
+        // Scroll to the message
+        messageDiv.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function showWelcomeMessage(tier) {
+        const messageDiv = document.getElementById('membership-message');
+        messageDiv.innerHTML = `
+        <h3>🎉 Membership Approved! 🎉</h3>
+        <p>Welcome to iClouds! As a ${tier} member, you now have:</p>
+        <ul style="text-align: left; max-width: 400px; margin: 1rem auto; display: inline-block;">
+            <li>Permission to look skyward during meetings</li>
+            <li>Bragging rights at meteorological parties</li>
+            <li>Our sincere appreciation for your excellent taste</li>
+        </ul>
+        <p><strong>Pro Tip:</strong> Your membership card will arrive via cumulus mail (allow 4-6 weeks)</p>
+        <button onclick="closeMembershipMessage()" class="btn">Begin Cloud Appreciation</button>
+    `;
+    }
+
+    function closeMembershipMessage() {
+        document.getElementById('membership-message').style.display = 'none';
+    }
+
+    // === SHOPPING CART SYSTEM ===
+    let cart = [];
+    let cartVisible = false;
+
+    function addToCart(product, price) {
+        cart.push({product, price});
+        updateCartDisplay();
+
+        // Show confirmation
+        alert(`Added "${product}" to your cart!\n\nRemember: You're purchasing the *idea* of ${product.toLowerCase()}. The existential experience is priceless.`);
+    }
+
+    function toggleCart() {
+        const dropdown = document.getElementById('cart-dropdown');
+        cartVisible = !cartVisible;
+        dropdown.style.display = cartVisible ? 'block' : 'none';
+    }
+
+    function updateCartDisplay() {
+        document.getElementById('cart-count').textContent = cart.length;
+
+        const cartItems = document.getElementById('cart-items');
+        const cartTotal = document.getElementById('cart-total');
+
+        if (cart.length === 0) {
+            cartItems.innerHTML = '<p>Your cart is as empty as a clear blue sky.</p>';
+            cartTotal.textContent = '';
+            return;
+        }
+
+        let itemsHTML = '';
+        let total = 0;
+
+        cart.forEach(item => {
+            itemsHTML += `<div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                    <span>${item.product}</span>
+                    <span>$${item.price}</span>
+                </div>`;
+            total += item.price;
+        });
+
+        cartItems.innerHTML = itemsHTML;
+        cartTotal.textContent = `Total: $${total} (metaphorical dollars)`;
+    }
+
+    function checkout() {
+        if (cart.length === 0) {
+            alert("Your cart is empty! Add some cloud-inspired merchandise first.");
+            return;
+        }
+
+        const total = cart.reduce((sum, item) => sum + item.price, 0);
+
+        document.getElementById('cart-dropdown').style.display = 'none';
+        cartVisible = false;
+
+        // Show humorous checkout process
+        setTimeout(() => {
+            alert(`💳 Processing your payment of $${total}...\n\nTransaction complete! Your metaphysical cloud products are being prepared for spiritual delivery.\n\nThank you for supporting atmospheric appreciation!`);
+            cart = [];
+            updateCartDisplay();
+        }, 1000);
+    }
+
+    // Close cart when clicking outside
+    document.addEventListener('click', function(event) {
+        const cartDropdown = document.getElementById('cart-dropdown');
+        const cartButton = document.querySelector('.cart-indicator button');
+
+        if (!cartButton.contains(event.target) && !cartDropdown.contains(event.target)) {
+            cartDropdown.style.display = 'none';
+            cartVisible = false;
+        }
+    });
+
+    // === FORM ENHANCEMENT ===
+    document.getElementById('sightingForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+        const cloudType = formData.get('cloud-type');
+        const emotionalImpact = formData.get('emotional-impact');
+        const narrative = formData.get('narrative');
+
+        // Add humorous validation
+        if (narrative.length < 50) {
+            alert("❌ Your narrative is too brief!\n\nPlease provide at least 50 words of profound reflection on this meteorological event. The clouds deserve better.");
+            return;
+        }
+
+        if (narrative.length > 500) {
+            alert("☁️ Whoa there, Shakespeare!\n\nYour narrative exceeds 500 words. While we appreciate your enthusiasm, please condense your atmospheric poetry.");
+            return;
+        }
+
+        // Show processing animation
+        const submitBtn = this.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Consulting Atmospheric Records...';
+        submitBtn.disabled = true;
+
+        // Simulate processing time
+        setTimeout(() => {
+            alert(`🌤️ Sighting Successfully Recorded!\n\nYour ${cloudType} sighting has been added to our archives with a classification of "${emotionalImpact}".\n\nThe Cloud Appreciation Committee will review your submission during their next skyward contemplation session.`);
+
+            this.reset();
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+
+            // Reset character counter if it exists
+            const counter = document.getElementById('narrative-counter');
+            if (counter) {
+                counter.textContent = '0/500 characters (500 remaining)';
+                counter.style.color = '#666';
+            }
+        }, 2000);
+    });
+
+    // Add real-time character counter for narrative
+    document.getElementById('narrative').addEventListener('input', function() {
+        const charCount = this.value.length;
+        const counter = document.getElementById('narrative-counter') ||
+            (function() {
+                const counter = document.createElement('div');
+                counter.id = 'narrative-counter';
+                counter.style.fontSize = '0.8rem';
+                counter.style.color = '#666';
+                counter.style.marginTop = '0.5rem';
+                this.parentNode.appendChild(counter);
+                return counter;
+            }).call(this);
+
+        counter.textContent = `${charCount}/500 characters (${500 - charCount} remaining)`;
+
+        if (charCount > 450) {
+            counter.style.color = '#e74c3c';
+        } else if (charCount > 400) {
+            counter.style.color = '#f39c12';
+        } else {
+            counter.style.color = '#666';
+        }
+    });
+
+    // === CLOUD GAME ===
+    const cloudTypes = ['cirrus', 'cumulus', 'stratus', 'nimbus'];
+    let currentCloud = 'cumulus'; // Default starting cloud
+
+    function checkAnswer(guess, button) {
+        const result = document.getElementById('game-result');
+
+        if (guess === currentCloud) {
+            result.textContent = "✅ Correct! You're a natural cloud spotter!";
+            result.style.color = '#27ae60';
+            button.style.backgroundColor = '#27ae60';
+            button.style.color = 'white';
+        } else {
+            result.textContent = `❌ Not quite! That was a ${currentCloud} cloud. Keep practicing!`;
+            result.style.color = '#e74c3c';
+            button.style.backgroundColor = '#e74c3c';
+            button.style.color = 'white';
+        }
+
+        // Reset buttons after delay
+        setTimeout(() => {
+            document.querySelectorAll('.cloud-game .btn').forEach(btn => {
+                btn.style.backgroundColor = '';
+                btn.style.color = '';
+            });
+        }, 3000);
+    }
+
+    function resetGame() {
+        // Pick a random cloud type
+        currentCloud = cloudTypes[Math.floor(Math.random() * cloudTypes.length)];
+
+        // Reset UI
+        document.getElementById('game-result').textContent = '';
+        document.querySelectorAll('.cloud-game .btn').forEach(btn => {
+            btn.style.backgroundColor = '';
+            btn.style.color = '';
+        });
+
+        // Update cloud visual (simplified - in a real app you'd change the shape)
+        const cloudShape = document.querySelector('.cloud-shape');
+        cloudShape.style.animation = 'none';
+        cloudShape.offsetHeight; // Trigger reflow
+        cloudShape.style.animation = null;
+    }
+
+    // Initialize the game
+    resetGame();
+
+    // Smooth scrolling for navigation
+    function smoothScroll(targetId) {
+        const element = document.getElementById(targetId);
+        if (element) {
+            element.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    }
+
+    // Social media alerts
+    function showSocialAlert(platform) {
+        const messages = {
+            'Instagram': 'Follow us on Instagram for daily cloud photography and sky-gazing inspiration! 📸☁️',
+            'Twitter': 'Join the conversation on Twitter using #iCloudsAppreciation! 🐦🌤️',
+            'Forums': 'Our member forums are where serious cloud discussions happen. Join to participate! 💭⛅'
+        };
+
+        alert(`${platform}:\n\n${messages[platform] || 'Coming soon to a cloud near you!'}`);
+    }
+
+    // Newsletter signup
+    function showNewsletterSignup() {
+        const email = prompt('Enter your email to subscribe to "The Condensation" newsletter:\n\n(Monthly cloud spotting tips, featured sightings, and atmospheric poetry)');
+        if (email && email.includes('@')) {
+            alert('Thank you! You\'ve been added to our newsletter. Check your inbox for a confirmation cloud. 📧☁️');
+        } else if (email) {
+            alert('That doesn\'t look like a valid email address. Please try again with a real cloud... I mean, email. 🌥️');
+        }
+    }
+
+    // Update all navigation links to use smooth scrolling
+    document.addEventListener('DOMContentLoaded', function() {
+        // Update header navigation
+        const navLinks = document.querySelectorAll('nav a[href^="#"]');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                smoothScroll(targetId);
+
+                // Close mobile menu if open
+                document.querySelector('nav ul').classList.remove('active');
+            });
+        });
+
+        // Update footer navigation
+        const footerLinks = document.querySelectorAll('.footer-links a[href^="#"]');
+        footerLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                smoothScroll(targetId);
+            });
+        });
+    });
+</script>
+</body>
+</html>
