@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-<!-- Header -->
 <header>
     <div class="container header-container">
         <div class="logo">
@@ -26,21 +25,20 @@
             </ul>
         </nav>
         <div class="cart-indicator">
-            <button onclick="toggleCart()" class="btn" style="background: transparent; color: var(--dark-blue); border: 1px solid var(--dark-blue); padding: 0.5rem 1rem;">
+            <button onclick="toggleCart()" class="btn cart-btn">
                 🛒 Cart <span id="cart-count">0</span>
             </button>
             <div id="cart-dropdown" class="cart-dropdown">
                 <h4>Your Cloud Collection</h4>
                 <div id="cart-items"></div>
-                <div id="cart-total" style="border-top: 1px solid #eee; padding-top: 1rem; margin-top: 1rem; font-weight: bold;"></div>
-                <button onclick="checkout()" class="btn" style="width: 100%; margin-top: 1rem;">Checkout (Theoretical)</button>
-                <p style="font-size: 0.8rem; margin-top: 0.5rem; font-style: italic;">Note: These are metaphorical clouds. No physical items will be shipped.</p>
+                <div id="cart-total" class="cart-total"></div>
+                <button onclick="checkout()" class="btn btn-full-width">Checkout (Theoretical)</button>
+                <p class="cart-note">Note: These are metaphorical clouds. No physical items will be shipped.</p>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Hero Section -->
 <section class="hero" id="home">
     <div class="container">
         <h1>Look Up.</h1>
@@ -50,7 +48,6 @@
     </div>
 </section>
 
-<!-- Intro Section -->
 <section class="intro">
     <div class="container">
         <h2>In a World of Grounded Concerns, We Champion the Ephemeral.</h2>
@@ -58,7 +55,6 @@
     </div>
 </section>
 
-<!-- Cloud of the Month -->
 <section class="cloud-of-month">
     <div class="container">
         <div class="section-header">
@@ -66,8 +62,7 @@
         </div>
         <div class="cloud-container">
             <div class="cloud-image">
-                <!-- Placeholder for cloud image -->
-                <div style="height: 300px; background: linear-gradient(to bottom, #87CEEB, #E0F7FF); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                <div class="cloud-placeholder">
                     Cumulus Mediocris
                 </div>
             </div>
@@ -80,7 +75,6 @@
     </div>
 </section>
 
-<!-- Membership Tiers -->
 <section class="membership" id="membership">
     <div class="container">
         <div class="section-header">
@@ -124,7 +118,7 @@
             <div class="tier-card">
                 <h3>Cumulonimbus Tier</h3>
                 <div class="tier-price">$199/year</div>
-                <p style="font-style: italic; color: var(--accent-gold); margin-bottom: 1rem;">Most Popular</p>
+                <p class="tier-popular">Most Popular</p>
                 <ul class="tier-features">
                     <li>All Cumulus benefits</li>
                     <li>A physical, embossed membership certificate</li>
@@ -136,12 +130,10 @@
             </div>
         </div>
 
-        <!-- Membership Message -->
         <div class="membership-message" id="membership-message"></div>
     </div>
 </section>
 
-<!-- Shop -->
 <section class="shop" id="shop">
     <div class="container">
         <div class="section-header">
@@ -156,7 +148,7 @@
                     <h3>Official Cloud-Spotting Blanket</h3>
                     <p class="product-price">$45</p>
                     <p>100% organic cotton, for optimal comfort during extended skyward gazing.</p>
-                    <button onclick="addToCart('Official Cloud-Spotting Blanket', 45)" class="btn" style="margin-top: 1rem;">Add to Cart</button>
+                    <button onclick="addToCart('Official Cloud-Spotting Blanket', 45)" class="btn btn-add-cart">Add to Cart</button>
                 </div>
             </div>
 
@@ -166,7 +158,7 @@
                     <h3>Lucid Skies Guidebook</h3>
                     <p class="product-price">$25</p>
                     <p>A waterproof, spiral-bound guide to cloud classification with philosophical foreword.</p>
-                    <button onclick="addToCart('Lucid Skies Guidebook', 25)" class="btn" style="margin-top: 1rem;">Add to Cart</button>
+                    <button onclick="addToCart('Lucid Skies Guidebook', 25)" class="btn btn-add-cart">Add to Cart</button>
                 </div>
             </div>
 
@@ -176,7 +168,7 @@
                     <h3>iClouds-branded Thermos</h3>
                     <p class="product-price">$32</p>
                     <p>Keep your beverage hot or cold while you contemplate the vastness of the atmosphere.</p>
-                    <button onclick="addToCart('iClouds-branded Thermos', 32)" class="btn" style="margin-top: 1rem;">Add to Cart</button>
+                    <button onclick="addToCart('iClouds-branded Thermos', 32)" class="btn btn-add-cart">Add to Cart</button>
                 </div>
             </div>
 
@@ -186,14 +178,13 @@
                     <h3>The "Full Sky" Kit</h3>
                     <p class="product-price">$95</p>
                     <p>Get the blanket, guidebook, and thermos together for the complete experience.</p>
-                    <button onclick="addToCart('The Full Sky Kit', 95)" class="btn" style="margin-top: 1rem;">Add to Cart</button>
+                    <button onclick="addToCart('The Full Sky Kit', 95)" class="btn btn-add-cart">Add to Cart</button>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Sighting Form -->
 <section class="sighting-form" id="sighting">
     <div class="container">
         <div class="section-header">
@@ -271,13 +262,12 @@
                     <textarea id="narrative" name="narrative" placeholder="Describe, in 500 words or less, the context of your sighting and its personal significance to you."></textarea>
                 </div>
 
-                <button type="submit" class="btn" style="width: 100%;">Submit Sighting</button>
+                <button type="submit" class="btn btn-full-width">Submit Sighting</button>
             </form>
         </div>
     </div>
 </section>
 
-<!-- Cloud Game -->
 <section class="cloud-game" id="game">
     <div class="container">
         <div class="section-header">
@@ -298,11 +288,10 @@
 
         <p id="game-result" class="game-result"></p>
 
-        <button onclick="resetGame()" class="btn" style="margin-top: 1rem;">Try Another Cloud</button>
+        <button onclick="resetGame()" class="btn btn-reset-game">Try Another Cloud</button>
     </div>
 </section>
 
-<!-- FAQ -->
 <section class="faq" id="faq">
     <div class="container">
         <div class="section-header">
@@ -353,8 +342,6 @@
     </div>
 </section>
 
-<!-- Footer -->
-<!-- Footer -->
 <footer>
     <div class="container">
         <div class="footer-container">
@@ -393,31 +380,23 @@
 </footer>
 
 <script>
-    // Mobile Menu Toggle
     document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
         document.querySelector('nav ul').classList.toggle('active');
     });
 
-    // Tab Switching for Membership Tiers
     const tabBtns = document.querySelectorAll('.tab-btn');
     const tabContents = document.querySelectorAll('.tab-content');
 
     tabBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            // Remove active class from all buttons and contents
             tabBtns.forEach(b => b.classList.remove('active'));
             tabContents.forEach(c => c.classList.remove('active'));
-
-            // Add active class to clicked button
             btn.classList.add('active');
-
-            // Show corresponding content
             const tabId = btn.getAttribute('data-tab') + '-tab';
             document.getElementById(tabId).classList.add('active');
         });
     });
 
-    // FAQ Accordion
     const faqQuestions = document.querySelectorAll('.faq-question');
 
     faqQuestions.forEach(question => {
@@ -425,17 +404,14 @@
             const answer = question.nextElementSibling;
             const isActive = answer.classList.contains('active');
 
-            // Close all answers
             document.querySelectorAll('.faq-answer').forEach(ans => {
                 ans.classList.remove('active');
             });
 
-            // Update all icons
             document.querySelectorAll('.faq-question span').forEach(icon => {
                 icon.textContent = '+';
             });
 
-            // If this answer wasn't active, open it
             if (!isActive) {
                 answer.classList.add('active');
                 question.querySelector('span').textContent = '−';
@@ -443,7 +419,6 @@
         });
     });
 
-    // === MEMBERSHIP SYSTEM ===
     function joinMembership(tier) {
         const messages = {
             cirrus: "You've chosen the Cirrus Tier - floating gently into our community!",
@@ -456,13 +431,11 @@
                 <h3>⏳ Processing Your Application</h3>
                 <p>${messages[tier]}</p>
                 <p><em>Consulting atmospheric conditions... Checking cloud alignment...</em></p>
-                <div class="loading" style="margin: 1rem 0;">☁️ ⏳ ☁️</div>
+                <div class="loading">☁️ ⏳ ☁️</div>
                 <p>This may take 2-5 business days (or until we see a particularly interesting cloud formation)</p>
                 <button onclick="showWelcomeMessage('${tier}')" class="btn">Simulate Approval</button>
             `;
         messageDiv.style.display = 'block';
-
-        // Scroll to the message
         messageDiv.scrollIntoView({ behavior: 'smooth' });
     }
 
@@ -471,7 +444,7 @@
         messageDiv.innerHTML = `
         <h3>🎉 Membership Approved! 🎉</h3>
         <p>Welcome to iClouds! As a ${tier} member, you now have:</p>
-        <ul style="text-align: left; max-width: 400px; margin: 1rem auto; display: inline-block;">
+        <ul class="welcome-list">
             <li>Permission to look skyward during meetings</li>
             <li>Bragging rights at meteorological parties</li>
             <li>Our sincere appreciation for your excellent taste</li>
@@ -485,15 +458,12 @@
         document.getElementById('membership-message').style.display = 'none';
     }
 
-    // === SHOPPING CART SYSTEM ===
     let cart = [];
     let cartVisible = false;
 
     function addToCart(product, price) {
         cart.push({product, price});
         updateCartDisplay();
-
-        // Show confirmation
         alert(`Added "${product}" to your cart!\n\nRemember: You're purchasing the *idea* of ${product.toLowerCase()}. The existential experience is priceless.`);
     }
 
@@ -541,7 +511,6 @@
         document.getElementById('cart-dropdown').style.display = 'none';
         cartVisible = false;
 
-        // Show humorous checkout process
         setTimeout(() => {
             alert(`💳 Processing your payment of $${total}...\n\nTransaction complete! Your metaphysical cloud products are being prepared for spiritual delivery.\n\nThank you for supporting atmospheric appreciation!`);
             cart = [];
@@ -549,7 +518,6 @@
         }, 1000);
     }
 
-    // Close cart when clicking outside
     document.addEventListener('click', function(event) {
         const cartDropdown = document.getElementById('cart-dropdown');
         const cartButton = document.querySelector('.cart-indicator button');
@@ -560,7 +528,6 @@
         }
     });
 
-    // === FORM ENHANCEMENT ===
     document.getElementById('sightingForm').addEventListener('submit', function(e) {
         e.preventDefault();
 
@@ -569,7 +536,6 @@
         const emotionalImpact = formData.get('emotional-impact');
         const narrative = formData.get('narrative');
 
-        // Add humorous validation
         if (narrative.length < 50) {
             alert("❌ Your narrative is too brief!\n\nPlease provide at least 50 words of profound reflection on this meteorological event. The clouds deserve better.");
             return;
@@ -580,13 +546,11 @@
             return;
         }
 
-        // Show processing animation
         const submitBtn = this.querySelector('button[type="submit"]');
         const originalText = submitBtn.textContent;
         submitBtn.textContent = 'Consulting Atmospheric Records...';
         submitBtn.disabled = true;
 
-        // Simulate processing time
         setTimeout(() => {
             alert(`🌤️ Sighting Successfully Recorded!\n\nYour ${cloudType} sighting has been added to our archives with a classification of "${emotionalImpact}".\n\nThe Cloud Appreciation Committee will review your submission during their next skyward contemplation session.`);
 
@@ -594,7 +558,6 @@
             submitBtn.textContent = originalText;
             submitBtn.disabled = false;
 
-            // Reset character counter if it exists
             const counter = document.getElementById('narrative-counter');
             if (counter) {
                 counter.textContent = '0/500 characters (500 remaining)';
@@ -603,7 +566,6 @@
         }, 2000);
     });
 
-    // Add real-time character counter for narrative
     document.getElementById('narrative').addEventListener('input', function() {
         const charCount = this.value.length;
         const counter = document.getElementById('narrative-counter') ||
@@ -628,9 +590,8 @@
         }
     });
 
-    // === CLOUD GAME ===
     const cloudTypes = ['cirrus', 'cumulus', 'stratus', 'nimbus'];
-    let currentCloud = 'cumulus'; // Default starting cloud
+    let currentCloud = 'cumulus';
 
     function checkAnswer(guess, button) {
         const result = document.getElementById('game-result');
@@ -647,7 +608,6 @@
             button.style.color = 'white';
         }
 
-        // Reset buttons after delay
         setTimeout(() => {
             document.querySelectorAll('.cloud-game .btn').forEach(btn => {
                 btn.style.backgroundColor = '';
@@ -657,27 +617,21 @@
     }
 
     function resetGame() {
-        // Pick a random cloud type
         currentCloud = cloudTypes[Math.floor(Math.random() * cloudTypes.length)];
-
-        // Reset UI
         document.getElementById('game-result').textContent = '';
         document.querySelectorAll('.cloud-game .btn').forEach(btn => {
             btn.style.backgroundColor = '';
             btn.style.color = '';
         });
 
-        // Update cloud visual (simplified - in a real app you'd change the shape)
         const cloudShape = document.querySelector('.cloud-shape');
         cloudShape.style.animation = 'none';
-        cloudShape.offsetHeight; // Trigger reflow
+        cloudShape.offsetHeight;
         cloudShape.style.animation = null;
     }
 
-    // Initialize the game
     resetGame();
 
-    // Smooth scrolling for navigation
     function smoothScroll(targetId) {
         const element = document.getElementById(targetId);
         if (element) {
@@ -688,7 +642,6 @@
         }
     }
 
-    // Social media alerts
     function showSocialAlert(platform) {
         const messages = {
             'Instagram': 'Follow us on Instagram for daily cloud photography and sky-gazing inspiration! 📸☁️',
@@ -699,7 +652,6 @@
         alert(`${platform}:\n\n${messages[platform] || 'Coming soon to a cloud near you!'}`);
     }
 
-    // Newsletter signup
     function showNewsletterSignup() {
         const email = prompt('Enter your email to subscribe to "The Condensation" newsletter:\n\n(Monthly cloud spotting tips, featured sightings, and atmospheric poetry)');
         if (email && email.includes('@')) {
@@ -709,22 +661,17 @@
         }
     }
 
-    // Update all navigation links to use smooth scrolling
     document.addEventListener('DOMContentLoaded', function() {
-        // Update header navigation
         const navLinks = document.querySelectorAll('nav a[href^="#"]');
         navLinks.forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href').substring(1);
                 smoothScroll(targetId);
-
-                // Close mobile menu if open
                 document.querySelector('nav ul').classList.remove('active');
             });
         });
 
-        // Update footer navigation
         const footerLinks = document.querySelectorAll('.footer-links a[href^="#"]');
         footerLinks.forEach(link => {
             link.addEventListener('click', function(e) {
