@@ -47,6 +47,8 @@ This website serves as:
 
 ### 🎉 Recent Updates
 
+- **Modular JavaScript Architecture**: Refactored JavaScript into 6 separate modules for better maintainability and organization (navigation, cart, forms, game, utilities, and main coordinator)
+- **Fixed Scroll Offset**: Navigation links now properly account for the sticky header height, ensuring content isn't hidden when scrolling to sections
 - **Enhanced Cart Icon**: Replaced emoji with a professional SVG shopping cart icon for better visibility and scalability
 - **CSS Cloud Art**: The "Cloud of the Month" section now features a beautiful pure CSS cloud illustration instead of an emoji, providing perfect scaling at any resolution
 - **Improved Visual Design**: Better visual hierarchy and clarity throughout the interface
@@ -182,36 +184,83 @@ Then navigate to `http://localhost:8000` in your browser.
 
 ```
 iclouds.no/
-├── index.html          # Main HTML file with structure
+├── index.html          # Main HTML file with structure and content
+├── 404.html            # Custom 404 error page
 ├── scripts/
-│   └── main.js         # All JavaScript functionality and interactions
+│   ├── main.js         # Application coordinator and initialization
+│   ├── navigation.js   # Navigation, scrolling, and membership functionality
+│   ├── cart.js         # Shopping cart logic and management
+│   ├── forms.js        # Form handling and validation
+│   ├── game.js         # Cloud identification game logic
+│   └── utils.js        # Utility functions and helpers
 ├── styles/
-│   └── style.css       # All styling and animations
-├── README.md           # This file
-└── .git/               # Git version control
+│   └── style.css       # Complete styling, animations, and responsive design
+├── robots.txt          # SEO robots configuration
+├── CNAME               # Custom domain configuration
+├── LICENSE             # MIT License
+├── README.md           # This file - comprehensive documentation
+└── .github/
+    └── workflows/
+        └── static.yml  # GitHub Pages deployment workflow
 ```
 
 ### File Descriptions
 
 - **`index.html`**: 
-  - Contains the complete HTML structure
-  - Semantic markup for all sections and components
-  - Links to external CSS and JavaScript files
+  - Contains the complete HTML structure and semantic markup
+  - All sections: hero, membership, shop, sighting form, game, FAQ, footer
+  - Links to external CSS and modular JavaScript files
+  - SEO and Open Graph meta tags
 
 - **`scripts/main.js`**: 
-  - All JavaScript functionality and interactions
-  - Implements membership system, shopping cart, form validation, and game logic
-  - Mobile menu toggle and navigation
+  - Application coordinator and centralized state management
+  - Initializes all modules on page load
+  - Defines membership pricing constants
+  - ~48 lines of code
+
+- **`scripts/navigation.js`**: 
+  - Smooth scrolling with sticky header offset compensation
+  - Mobile menu toggle with accessibility features
+  - Membership tier tab switching
   - FAQ accordion functionality
+  - Social links and newsletter signup
+  - ~431 lines of code
+
+- **`scripts/cart.js`**: 
+  - Shopping cart state management
+  - Add to cart functionality
+  - Cart display and toggle
+  - Mock checkout process
+  - ~145 lines of code
+
+- **`scripts/forms.js`**: 
+  - Cloud sighting form validation
+  - Character counter for narrative field
+  - Form submission handling with localStorage
+  - Success/error feedback
+  - ~132 lines of code
+
+- **`scripts/game.js`**: 
+  - Cloud identification game logic
+  - Answer checking and feedback
+  - Game reset and randomization
+  - Score tracking
+  - ~88 lines of code
+
+- **`scripts/utils.js`**: 
+  - Utility functions for safe DOM queries
   - Toast notification system
-  - Event handling and DOM manipulation
-  - ~367 lines of code
+  - HTML sanitization
+  - Shared helper functions
+  - ~119 lines of code
 
 - **`styles/style.css`**: 
   - Complete styling for all components
-  - CSS custom properties for theming
+  - CSS custom properties for consistent theming
   - Responsive design media queries
+  - Pure CSS cloud illustration
   - Animation keyframes and transitions
+  - ~1400+ lines of well-organized CSS
 
 ---
 
