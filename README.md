@@ -182,7 +182,9 @@ Then navigate to `http://localhost:8000` in your browser.
 
 ```
 iclouds.no/
-├── index.html          # Main HTML file with structure and JavaScript
+├── index.html          # Main HTML file with structure
+├── scripts/
+│   └── main.js         # All JavaScript functionality and interactions
 ├── styles/
 │   └── style.css       # All styling and animations
 ├── README.md           # This file
@@ -193,15 +195,23 @@ iclouds.no/
 
 - **`index.html`**: 
   - Contains the complete HTML structure
-  - Includes all JavaScript functionality inline
-  - Implements membership, shopping cart, form validation, and game logic
-  - ~685 lines of code
+  - Semantic markup for all sections and components
+  - Links to external CSS and JavaScript files
+
+- **`scripts/main.js`**: 
+  - All JavaScript functionality and interactions
+  - Implements membership system, shopping cart, form validation, and game logic
+  - Mobile menu toggle and navigation
+  - FAQ accordion functionality
+  - Toast notification system
+  - Event handling and DOM manipulation
+  - ~367 lines of code
 
 - **`styles/style.css`**: 
   - Complete styling for all components
   - CSS custom properties for theming
   - Responsive design media queries
-  - Animation keyframes
+  - Animation keyframes and transitions
 
 ---
 
