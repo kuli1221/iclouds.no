@@ -12,9 +12,19 @@ let lastFocusedElement = null;
 function smoothScroll(targetId) {
     const element = safeQuerySelector(`#${targetId}`);
     if (element) {
-        element.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
+        // Get the header height to offset the scroll position
+        const header = safeQuerySelector('header');
+        const headerHeight = header ? header.offsetHeight : 0;
+        const additionalOffset = 20; // Extra spacing for better visual appearance
+        
+        // Calculate the target position accounting for the sticky header
+        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - headerHeight - additionalOffset;
+        
+        // Scroll to the calculated position
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
         });
         
         // Clear hash from URL after scrolling
@@ -24,14 +34,16 @@ function smoothScroll(targetId) {
             window.location.hash = '';
         }
 
-        // Set focus to the section for screen readers
-        element.setAttribute('tabindex', '-1');
-        element.focus();
-        
-        // Remove tabindex after focus
+        // Set focus to the section for screen readers after scroll completes
         setTimeout(() => {
-            element.removeAttribute('tabindex');
-        }, 100);
+            element.setAttribute('tabindex', '-1');
+            element.focus();
+            
+            // Remove tabindex after focus
+            setTimeout(() => {
+                element.removeAttribute('tabindex');
+            }, 100);
+        }, 500); // Wait for smooth scroll to complete
     }
 }
 
