@@ -1,4 +1,5 @@
 :root {
+    /* Color palette */
     --primary-blue: #4a7b9d;
     --light-blue: #e8f4f8;
     --dark-blue: #2c3e50;
@@ -6,6 +7,20 @@
     --text-dark: #333;
     --text-light: #666;
     --white: #fff;
+    
+    /* Spacing scale - consistent 8px-based scale */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-2xl: 48px;
+    
+    /* Responsive breakpoints */
+    --breakpoint-mobile: 480px;
+    --breakpoint-tablet: 768px;
+    --breakpoint-desktop: 1024px;
+    --breakpoint-wide: 1200px;
 }
 
 html {
@@ -16,6 +31,16 @@ html {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+/* Respect user's motion preferences for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }
 
 body {
@@ -334,6 +359,8 @@ nav a:hover {
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     transition: transform 0.3s;
+    /* CSS containment for performance - isolates layout calculations */
+    contain: layout style paint;
 }
 
 .product-card:hover {
@@ -620,27 +647,33 @@ footer {
     position: relative;
 }
 
-/* CSS Cloud Art */
+/* CSS Cloud Art - Pure CSS cloud illustration for Cloud of the Month
+ * Creates a realistic cumulus cloud using overlapping circles
+ * All parts use border-radius: 50% for smooth, rounded edges
+ */
 .css-cloud {
     position: relative;
     width: 200px;
     height: 120px;
 }
 
+/* Base cloud part - all parts share these properties */
 .cloud-part {
     position: absolute;
     background: white;
-    border-radius: 50%;
+    border-radius: 50%; /* Makes each part circular */
 }
 
+/* Main body of the cloud - largest elliptical part at the base */
 .cloud-main {
     width: 140px;
     height: 70px;
     bottom: 20px;
     left: 30px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* Adds depth and realism */
 }
 
+/* Left puff - creates volume on the left side */
 .cloud-left {
     width: 80px;
     height: 80px;
@@ -648,6 +681,7 @@ footer {
     left: 0;
 }
 
+/* Right puff - balances the cloud on the right side */
 .cloud-right {
     width: 90px;
     height: 85px;
@@ -655,6 +689,7 @@ footer {
     right: 10px;
 }
 
+/* Top puff - creates the characteristic billowing top of a cumulus cloud */
 .cloud-top {
     width: 100px;
     height: 95px;
@@ -899,5 +934,80 @@ footer {
         left: 10px;
         bottom: 10px;
         max-width: none;
+    }
+}
+
+/* Focus indicators for accessibility - visible focus outlines */
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus,
+[tabindex]:focus {
+    outline: 3px solid var(--primary-blue);
+    outline-offset: 2px;
+}
+
+/* Loading spinner component */
+.loading-spinner {
+    display: inline-block;
+    text-align: center;
+    padding: var(--spacing-sm);
+}
+
+.spinner-icon {
+    display: inline-block;
+    animation: spin 2s linear infinite;
+    font-size: 1.5rem;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Cart item styles */
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-sm);
+    padding: var(--spacing-xs) 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+/* Form counter for character count */
+.form-counter {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin-top: var(--spacing-xs);
+}
+
+/* Print stylesheet for membership certificates */
+@media print {
+    header,
+    footer,
+    .cart-indicator,
+    .mobile-menu-btn,
+    nav {
+        display: none;
+    }
+    
+    .membership-message {
+        page-break-before: always;
+        border: 2px solid var(--dark-blue);
+        padding: var(--spacing-2xl);
+    }
+    
+    body {
+        font-size: 12pt;
+        line-height: 1.5;
+    }
+    
+    h1, h2, h3 {
+        page-break-after: avoid;
     }
 }

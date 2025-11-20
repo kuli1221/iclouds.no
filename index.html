@@ -4,8 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>iClouds - The International Cloud Appreciation Society</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="iClouds.no - A satirical cloud appreciation society championing the ephemeral.">
+    <link rel="canonical" href="https://iclouds.no">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="iClouds.no - Cloud Appreciation Society">
+    <meta property="og:description" content="In a World of Grounded Concerns, We Champion the Ephemeral.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://iclouds.no">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="iClouds.no - Cloud Appreciation Society">
+    <meta name="twitter:description" content="In a World of Grounded Concerns, We Champion the Ephemeral.">
+    
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/style.css?v=1.1">
 </head>
 <body>
 <header>
@@ -13,9 +29,9 @@
         <div class="logo" title="Scroll to top">
             <h1>i<span>Clouds</span></h1>
         </div>
-        <button class="mobile-menu-btn">☰</button>
-        <nav>
-            <ul>
+        <button class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="main-navigation">☰</button>
+        <nav aria-label="Main navigation">
+            <ul id="main-navigation" role="list" aria-hidden="false">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#membership">Membership</a></li>
                 <li><a href="#shop">Shop</a></li>
@@ -25,20 +41,20 @@
             </ul>
         </nav>
         <div class="cart-indicator">
-            <button onclick="toggleCart()" class="btn cart-btn">
-                <svg class="cart-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <button onclick="toggleCart()" class="btn cart-btn" aria-label="Shopping cart" data-action="toggle-cart">
+                <svg class="cart-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <path d="M9 2L7.17 4H3C1.9 4 1 4.9 1 6V18C1 19.1 1.9 20 3 20H21C22.1 20 23 19.1 23 18V6C23 4.9 22.1 4 21 4H16.83L15 2H9ZM9 4H15L16.83 6H21V18H3V6H7.17L9 4Z" fill="currentColor"/>
                     <circle cx="9" cy="15" r="1.5" fill="currentColor"/>
                     <circle cx="15" cy="15" r="1.5" fill="currentColor"/>
                     <path d="M7 7L6 13H18L17 7H7Z" fill="currentColor"/>
                 </svg>
-                Cart <span id="cart-count">0</span>
+                Cart <span id="cart-count" aria-live="polite" aria-atomic="true">0</span>
             </button>
-            <div id="cart-dropdown" class="cart-dropdown">
+            <div id="cart-dropdown" class="cart-dropdown" role="region" aria-label="Shopping cart" aria-hidden="true">
                 <h4>Your Cloud Collection</h4>
-                <div id="cart-items"></div>
-                <div id="cart-total" class="cart-total"></div>
-                <button onclick="checkout()" class="btn btn-full-width">Checkout (Theoretical)</button>
+                <div id="cart-items" aria-live="polite" aria-atomic="true"></div>
+                <div id="cart-total" class="cart-total" aria-live="polite"></div>
+                <button onclick="checkout()" class="btn btn-full-width" data-action="checkout">Checkout (Theoretical)</button>
                 <p class="cart-note">Note: These are metaphorical clouds. No physical items will be shipped.</p>
             </div>
         </div>
@@ -109,13 +125,13 @@
             <h2>Elevate Your Existence. Join iClouds.</h2>
         </div>
 
-        <div class="tabs">
-            <button class="tab-btn active" data-tab="cirrus">Cirrus Tier</button>
-            <button class="tab-btn" data-tab="cumulus">Cumulus Tier</button>
-            <button class="tab-btn" data-tab="cumulonimbus">Cumulonimbus Tier</button>
+        <div class="tabs" role="tablist" aria-label="Membership tiers">
+            <button class="tab-btn active" data-tab="cirrus" role="tab" aria-selected="true" aria-controls="cirrus-tab" id="cirrus-tab-btn">Cirrus Tier</button>
+            <button class="tab-btn" data-tab="cumulus" role="tab" aria-selected="false" aria-controls="cumulus-tab" id="cumulus-tab-btn">Cumulus Tier</button>
+            <button class="tab-btn" data-tab="cumulonimbus" role="tab" aria-selected="false" aria-controls="cumulonimbus-tab" id="cumulonimbus-tab-btn">Cumulonimbus Tier</button>
         </div>
 
-        <div class="tab-content active" id="cirrus-tab">
+        <div class="tab-content active" id="cirrus-tab" role="tabpanel" aria-labelledby="cirrus-tab-btn" aria-hidden="false">
             <div class="tier-card">
                 <h3>Cirrus Tier</h3>
                 <div class="tier-price">Free</div>
@@ -124,11 +140,11 @@
                     <li>View the public Cloud Gallery</li>
                     <li>The personal satisfaction of knowing you're part of something bigger</li>
                 </ul>
-                <button onclick="joinMembership('cirrus')" class="btn">Join Now</button>
+                <button onclick="joinMembership('cirrus')" class="btn" data-action="join-membership" data-tier="cirrus">Join Now</button>
             </div>
         </div>
 
-        <div class="tab-content" id="cumulus-tab">
+        <div class="tab-content" id="cumulus-tab" role="tabpanel" aria-labelledby="cumulus-tab-btn" aria-hidden="true">
             <div class="tier-card">
                 <h3>Cumulus Tier</h3>
                 <div class="tier-price">$49/year</div>
@@ -138,11 +154,11 @@
                     <li>A digital "Member" badge for your email signature</li>
                     <li>Voting rights in our annual "Cloud of the Year" awards</li>
                 </ul>
-                <button onclick="joinMembership('cumulus')" class="btn">Join Now</button>
+                <button onclick="joinMembership('cumulus')" class="btn" data-action="join-membership" data-tier="cumulus">Join Now</button>
             </div>
         </div>
 
-        <div class="tab-content" id="cumulonimbus-tab">
+        <div class="tab-content" id="cumulonimbus-tab" role="tabpanel" aria-labelledby="cumulonimbus-tab-btn" aria-hidden="true">
             <div class="tier-card">
                 <h3>Cumulonimbus Tier</h3>
                 <div class="tier-price">$199/year</div>
@@ -154,7 +170,7 @@
                     <li>Priority consideration for having your cloud photos featured</li>
                     <li>The title "Official Sky-Scanner" on your forum profile</li>
                 </ul>
-                <button onclick="joinMembership('cumulonimbus')" class="btn">Join Now</button>
+                <button onclick="joinMembership('cumulonimbus')" class="btn" data-action="join-membership" data-tier="cumulonimbus">Join Now</button>
             </div>
         </div>
 
@@ -171,42 +187,42 @@
 
         <div class="products">
             <div class="product-card">
-                <div class="product-image">🛏️</div>
+                <div class="product-image" aria-hidden="true">🛏️</div>
                 <div class="product-content">
                     <h3>Official Cloud-Spotting Blanket</h3>
                     <p class="product-price">$45</p>
                     <p>100% organic cotton, for optimal comfort during extended skyward gazing.</p>
-                    <button onclick="addToCart('Official Cloud-Spotting Blanket', 45)" class="btn btn-add-cart">Add to Cart</button>
+                    <button data-action="add-to-cart" data-product-id="Official Cloud-Spotting Blanket" data-price="45" class="btn btn-add-cart" aria-label="Add Official Cloud-Spotting Blanket to cart">Add to Cart</button>
                 </div>
             </div>
 
             <div class="product-card">
-                <div class="product-image">📖</div>
+                <div class="product-image" aria-hidden="true">📖</div>
                 <div class="product-content">
                     <h3>Lucid Skies Guidebook</h3>
                     <p class="product-price">$25</p>
                     <p>A waterproof, spiral-bound guide to cloud classification with philosophical foreword.</p>
-                    <button onclick="addToCart('Lucid Skies Guidebook', 25)" class="btn btn-add-cart">Add to Cart</button>
+                    <button data-action="add-to-cart" data-product-id="Lucid Skies Guidebook" data-price="25" class="btn btn-add-cart" aria-label="Add Lucid Skies Guidebook to cart">Add to Cart</button>
                 </div>
             </div>
 
             <div class="product-card">
-                <div class="product-image">☕</div>
+                <div class="product-image" aria-hidden="true">☕</div>
                 <div class="product-content">
                     <h3>iClouds-branded Thermos</h3>
                     <p class="product-price">$32</p>
                     <p>Keep your beverage hot or cold while you contemplate the vastness of the atmosphere.</p>
-                    <button onclick="addToCart('iClouds-branded Thermos', 32)" class="btn btn-add-cart">Add to Cart</button>
+                    <button data-action="add-to-cart" data-product-id="iClouds-branded Thermos" data-price="32" class="btn btn-add-cart" aria-label="Add iClouds-branded Thermos to cart">Add to Cart</button>
                 </div>
             </div>
 
             <div class="product-card">
-                <div class="product-image">🎁</div>
+                <div class="product-image" aria-hidden="true">🎁</div>
                 <div class="product-content">
                     <h3>The "Full Sky" Kit</h3>
                     <p class="product-price">$95</p>
                     <p>Get the blanket, guidebook, and thermos together for the complete experience.</p>
-                    <button onclick="addToCart('The Full Sky Kit', 95)" class="btn btn-add-cart">Add to Cart</button>
+                    <button data-action="add-to-cart" data-product-id="The Full Sky Kit" data-price="95" class="btn btn-add-cart" aria-label="Add The Full Sky Kit to cart">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -221,22 +237,22 @@
         </div>
 
         <div class="form-container">
-            <form id="sightingForm">
+            <form id="sightingForm" aria-label="Cloud sighting report form">
                 <div class="form-group">
                     <label for="date">Date & Time of Sighting</label>
-                    <input type="datetime-local" id="date" name="date" required>
-                    <p class="form-note">Precise to the minute, please</p>
+                    <input type="datetime-local" id="date" name="date" required aria-required="true">
+                    <p class="form-note" id="date-note">Precise to the minute, please</p>
                 </div>
 
                 <div class="form-group">
                     <label for="coordinates">GPS Coordinates</label>
-                    <input type="text" id="coordinates" name="coordinates" placeholder="e.g., 40.7128° N, 74.0060° W" required>
-                    <p class="form-note">Mandatory for proper cloud tracking</p>
+                    <input type="text" id="coordinates" name="coordinates" placeholder="e.g., 40.7128° N, 74.0060° W" required aria-required="true" aria-describedby="coordinates-note">
+                    <p class="form-note" id="coordinates-note">Mandatory for proper cloud tracking</p>
                 </div>
 
                 <div class="form-group">
                     <label for="cloud-type">Primary Cloud Genus</label>
-                    <select id="cloud-type" name="cloud-type" required>
+                    <select id="cloud-type" name="cloud-type" required aria-required="true">
                         <option value="">Select a cloud type</option>
                         <option value="cirrus">Cirrus</option>
                         <option value="cumulus">Cumulus</option>
@@ -253,7 +269,7 @@
 
                 <div class="form-group">
                     <label for="classification">Secondary Classification</label>
-                    <select id="classification" name="classification">
+                    <select id="classification" name="classification" aria-label="Secondary cloud classification (optional)">
                         <option value="">Select classification (optional)</option>
                         <option value="species">Species</option>
                         <option value="varieties">Varieties</option>
@@ -264,12 +280,12 @@
 
                 <div class="form-group">
                     <label for="altitude">Estimated Altitude</label>
-                    <input type="text" id="altitude" name="altitude" placeholder="e.g., 6,500 ft">
+                    <input type="text" id="altitude" name="altitude" placeholder="e.g., 6,500 ft" aria-label="Estimated cloud altitude">
                 </div>
 
                 <div class="form-group">
                     <label for="emotional-impact">Emotional Impact</label>
-                    <select id="emotional-impact" name="emotional-impact" required>
+                    <select id="emotional-impact" name="emotional-impact" required aria-required="true">
                         <option value="">Select your emotional response</option>
                         <option value="awe">Awe</option>
                         <option value="serenity">Serenity</option>
@@ -281,16 +297,17 @@
 
                 <div class="form-group">
                     <label for="photo">Photographic Evidence</label>
-                    <input type="file" id="photo" name="photo" accept="image/*">
-                    <p class="form-note">File types: .jpg, .png, .heic. Max 5MB. No filters. We value authenticity.</p>
+                    <input type="file" id="photo" name="photo" accept="image/*" aria-describedby="photo-note">
+                    <p class="form-note" id="photo-note">File types: .jpg, .png, .heic. Max 5MB. No filters. We value authenticity.</p>
                 </div>
 
                 <div class="form-group">
                     <label for="narrative">Personal Narrative</label>
-                    <textarea id="narrative" name="narrative" placeholder="Describe, in 500 words or less, the context of your sighting and its personal significance to you."></textarea>
+                    <textarea id="narrative" name="narrative" placeholder="Describe, in 500 words or less, the context of your sighting and its personal significance to you." aria-describedby="narrative-note"></textarea>
+                    <p class="form-note" id="narrative-note">500 characters maximum</p>
                 </div>
 
-                <button type="submit" class="btn btn-full-width">Submit Sighting</button>
+                <button type="submit" class="btn btn-full-width" data-action="submit-sighting">Submit Sighting</button>
             </form>
         </div>
     </div>
@@ -303,20 +320,20 @@
             <p>Test your cloud identification skills with our interactive game</p>
         </div>
 
-        <div class="cloud-shape"></div>
+        <div class="cloud-shape" role="img" aria-label="Cloud illustration"></div>
 
         <p>Identify this cloud type:</p>
 
-        <div class="game-options">
-            <button onclick="checkAnswer('cirrus', this)" class="btn btn-outline">Cirrus</button>
-            <button onclick="checkAnswer('cumulus', this)" class="btn btn-outline">Cumulus</button>
-            <button onclick="checkAnswer('stratus', this)" class="btn btn-outline">Stratus</button>
-            <button onclick="checkAnswer('nimbus', this)" class="btn btn-outline">Nimbus</button>
+        <div class="game-options" role="group" aria-label="Cloud type options">
+            <button onclick="checkAnswer('cirrus', this)" class="btn btn-outline" data-action="check-answer" data-cloud-type="cirrus" aria-label="Select Cirrus">Cirrus</button>
+            <button onclick="checkAnswer('cumulus', this)" class="btn btn-outline" data-action="check-answer" data-cloud-type="cumulus" aria-label="Select Cumulus">Cumulus</button>
+            <button onclick="checkAnswer('stratus', this)" class="btn btn-outline" data-action="check-answer" data-cloud-type="stratus" aria-label="Select Stratus">Stratus</button>
+            <button onclick="checkAnswer('nimbus', this)" class="btn btn-outline" data-action="check-answer" data-cloud-type="nimbus" aria-label="Select Nimbus">Nimbus</button>
         </div>
 
-        <p id="game-result" class="game-result"></p>
+        <p id="game-result" class="game-result" role="status" aria-live="polite" aria-atomic="true"></p>
 
-        <button onclick="resetGame()" class="btn btn-reset-game">Try Another Cloud</button>
+        <button onclick="resetGame()" class="btn btn-reset-game" data-action="reset-game">Try Another Cloud</button>
     </div>
 </section>
 
@@ -407,6 +424,11 @@
     </div>
 </footer>
 
-<script src="scripts/main.js"></script>
+<script src="scripts/utils.js?v=1.1"></script>
+<script src="scripts/cart.js?v=1.1"></script>
+<script src="scripts/game.js?v=1.1"></script>
+<script src="scripts/forms.js?v=1.1"></script>
+<script src="scripts/navigation.js?v=1.1"></script>
+<script src="scripts/main.js?v=1.1"></script>
 </body>
 </html>
