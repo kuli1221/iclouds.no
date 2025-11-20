@@ -26,7 +26,13 @@
         </nav>
         <div class="cart-indicator">
             <button onclick="toggleCart()" class="btn cart-btn">
-                🛒 Cart <span id="cart-count">0</span>
+                <svg class="cart-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 2L7.17 4H3C1.9 4 1 4.9 1 6V18C1 19.1 1.9 20 3 20H21C22.1 20 23 19.1 23 18V6C23 4.9 22.1 4 21 4H16.83L15 2H9ZM9 4H15L16.83 6H21V18H3V6H7.17L9 4Z" fill="currentColor"/>
+                    <circle cx="9" cy="15" r="1.5" fill="currentColor"/>
+                    <circle cx="15" cy="15" r="1.5" fill="currentColor"/>
+                    <path d="M7 7L6 13H18L17 7H7Z" fill="currentColor"/>
+                </svg>
+                Cart <span id="cart-count">0</span>
             </button>
             <div id="cart-dropdown" class="cart-dropdown">
                 <h4>Your Cloud Collection</h4>
@@ -63,7 +69,14 @@
         <div class="cloud-container">
             <div class="cloud-image">
                 <div class="cloud-placeholder">
-                    <div class="cloud-visual">☁️</div>
+                    <div class="cloud-visual">
+                        <div class="css-cloud">
+                            <div class="cloud-part cloud-main"></div>
+                            <div class="cloud-part cloud-left"></div>
+                            <div class="cloud-part cloud-right"></div>
+                            <div class="cloud-part cloud-top"></div>
+                        </div>
+                    </div>
                     <div class="cloud-label">Cumulus Mediocris</div>
                 </div>
             </div>
