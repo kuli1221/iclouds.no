@@ -198,7 +198,6 @@ function joinMembership(tier) {
         messageDiv.style.display = 'block';
         messageDiv.setAttribute('role', 'region');
         messageDiv.setAttribute('aria-live', 'polite');
-        messageDiv.scrollIntoView({ behavior: 'smooth' });
     } catch (error) {
         console.error('Error joining membership:', error);
         showToast('Failed to process membership. Please try again.', 'error');
